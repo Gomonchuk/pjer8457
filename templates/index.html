@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Динамическая форма</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Динамическое добавление инпутов</h1>
+    <form class="dynamicForm" >
+        <div class="dynamicForm_inputs">
+                <input class="dynamicForm_input" type="text" name="name"  placeholder="Введите имя" required>
+        </div>
+	<div class="dynamicForm_buttons">
+       	 	<button type="button" class="dynamicForm_addInput">Добавить инпут</button>
+        	<button type="submit" class="dynamicForm_send">Отправить</button>
+	</div>
+    </form>
+<script src="{{ url_for('static', filename='dynamicForm.js') }}"></script>
+</body>
+</html>
+
