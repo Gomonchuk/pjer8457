@@ -103,7 +103,7 @@ server {
 ```
 sudo ln -s /etc/nginx/sites-available/my_flask_app /etc/nginx/sites-enabled
 ```
-## 7. Настроим firewall UFW
+## 7. Настроим iptables через UFW
 ```
 sudo ufw allow 'Nginx Full'
 sudo ufw allow ssh # не забываем а то можно потерять доступ к серверу
