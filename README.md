@@ -129,4 +129,3 @@ sudo systemctl start gunicorn.service
 ```
 sudo systemctl reload nginx
 ```
-~                             
