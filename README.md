@@ -55,11 +55,11 @@ SocketMode=0660
 [Install]
 WantedBy=sockets.target
 ```
-## 5 Регистрируем демон(службу) в systemd
+## 5. Регистрируем daemon(службу) в systemd
 ```
 sudo vim /etc/systemd/system/gunicorn.service
 ```
-### 5.1 Конфиг демона
+### 5.1 Конфиг daemon(cлужбы)
 ```
 Description=gunicorn daemon
 Requires=gunicorn.socket
@@ -118,7 +118,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable gunicorn.socket
 sudo systemctl start gunicorn.socket
 ```
-## 8.2 Включаем и запускаем демон
+## 8.2 Включаем и запускаем daemon(службу
 ```
 sudo systemctl enable gunicorn.service
 sudo systemctl start gunicorn.service
