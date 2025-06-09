@@ -109,7 +109,7 @@ sudo ufw allow 'Nginx Full'
 sudo ufw allow ssh # не забываем а то можно потерять доступ к серверу
 sudo ufw enable
 ```
-## 8  Перезагружаем и регистрируем конфигурации в systemd
+## 8 Обновляем конфигурацию менеджера системных служб systemd
 ```
 sudo systemctl daemon-reload
 ```
