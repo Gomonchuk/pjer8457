@@ -6,12 +6,12 @@ ssh-keygen
 ```
 ### 1.2 Подключение к серверу через сгенерированный публичный ключ
 ```bash
-ssh-copy-id -i /home/ubuntu/.ssh/id_rsa.pub login@81.96.250.50
+ssh-copy-id -i /home/ubuntu/.ssh/id_rsa.pub login@ip_addres_of_server
 ```
 потребует ввести пароль от учетной записи пользователя(login) на удаленном хосте
 ### 1.3 В дальнейшим достаточно подключаться через комманду
 ```bash
-ssh alex@82.97.250.52
+ssh login@ip_addres_of_server
 ```
 ## 2. Установка всех необходимых пакетов
 ```
@@ -37,7 +37,7 @@ sudo python3 -m venv venv
 ```
 pip install -r requirements.txt
 ```
-### 4. Регистрируем сокет и в systemd
+### 4. Регистрируем сокет в systemd
 ```
 sudo vim /etc/systemd/system/gunicorn.socket
 ```
@@ -55,11 +55,11 @@ SocketMode=0660
 [Install]
 WantedBy=sockets.target
 ```
-### 4. Регистрируем демон(службу) в systemd
+## 5 Регистрируем демон(службу) в systemd
 ```
 sudo vim /etc/systemd/system/gunicorn.service
 ```
-### 4.1 Конфиг демона
+### 5.1 Конфиг демона
 ```
 Description=gunicorn daemon
 Requires=gunicorn.socket
@@ -74,12 +74,12 @@ ExecStart=/var/www/my_flask_app/venv/bin/gunicorn --workers 3 --bind unix:/run/g
 [Install]
 WantedBy=multi-user.target
 ```
-## 5. Настройка nginx
+## 6. Настройка nginx
 ```
 sudo rm /etc/nginx/sites-available/default
 sudo vim /etc/nginx/sites-available/my_flask_app
 ```
-### 5.1 Конфиг nginx для нашего приложения
+### 6.1 Конфиг nginx для нашего приложения
 ```
 server {
     listen 80;
@@ -99,32 +99,32 @@ server {
     }
 }
 ```
-### 5.2 Активиция конфига Nginx
+### 6.2 Активиция конфига Nginx
 ```
 sudo ln -s /etc/nginx/sites-available/my_flask_app /etc/nginx/sites-enabled
 ```
-### 6. Настроим firewall UFW
+## 7. Настроим firewall UFW
 ```
 sudo apt install ufw
 sudo ufw allow 'Nginx Full'
 sudo ufw allow ssh # не забываем а то можно потерять доступ к серверу
 sudo ufw enable
 ```
-### 7  Перезагружаем и регистрируем конфигурации в systemd
+## 8  Перезагружаем и регистрируем конфигурации в systemd
 ```
 sudo systemctl daemon-reload
 ```
-## 7.1 Включаем и запускаем сокет
+## 8.1 Включаем и запускаем сокет
 ```
 sudo systemctl enable gunicorn.socket
 sudo systemctl start gunicorn.socket
 ```
-## 7.2 Включаем и запускаем демон
+## 8.2 Включаем и запускаем демон
 ```
 sudo systemctl enable gunicorn.service
 sudo systemctl start gunicorn.service
 ```
-## 7.3 Перезагружаем nginx
+## 8.3 Перезагружаем nginx
 ```
 sudo systemctl reload nginx
 ```
