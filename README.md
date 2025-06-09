@@ -17,7 +17,7 @@ ssh login@ip_addres_of_server
 ```
 sudo apt update
 sudo apt upgrade
-sudo apt install git python3 nginx python3-venv 
+sudo apt install ufw git python3 nginx python3-venv 
 ```
 ## 3. Загружаем приложение в стандартную директорию /var/www/
 ```
@@ -105,7 +105,6 @@ sudo ln -s /etc/nginx/sites-available/my_flask_app /etc/nginx/sites-enabled
 ```
 ## 7. Настроим firewall UFW
 ```
-sudo apt install ufw
 sudo ufw allow 'Nginx Full'
 sudo ufw allow ssh # не забываем а то можно потерять доступ к серверу
 sudo ufw enable
