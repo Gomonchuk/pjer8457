@@ -6,12 +6,12 @@ ssh-keygen
 ```
 ### 1.2 Подключение к серверу через сгенерированный публичный ключ
 ```bash
-ssh-copy-id -i /home/ubuntu/.ssh/id_rsa.pub login@ip_addres_of_server
+ssh-copy-id -i /home/ubuntu/.ssh/id_rsa.pub login@ip_address_of_server
 ```
 потребует ввести пароль от учетной записи пользователя(login) на удаленном хосте
 ### 1.3 В дальнейшим достаточно подключаться через комманду
 ```bash
-ssh login@ip_addres_of_server
+ssh login@ip_address_of_server
 ```
 ## 2. Установка всех необходимых пакетов
 ```
