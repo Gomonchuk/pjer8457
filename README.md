@@ -24,7 +24,6 @@ sudo apt install git python3 nginx python3-venv
 cd /var/www/ && sudo git clone https://github.com/Gomonchuk/pjer8457 my_flask_app 
 sudo chown -R :www-data ./
 cd my_flask_app
-sudo python3 -m venv venv
 ```
 ### 3.1 Создание виртуального окружение python с помощью модуля venv
 ```
